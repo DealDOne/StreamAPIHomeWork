@@ -28,19 +28,18 @@ public class Main {
                 .map(Person::getFamily)
                 .collect(Collectors.toList());
 
-        List<Person> rabotosposobnie = persons.stream()
+        List<Person> workers = persons.stream()
                 .filter(x -> x.getEducation() == Education.HIGHER)
                 .filter(x -> (x.getSex() == Sex.WOMAN && x.getAge() >= 18 && x.getAge() < 60) || (x.getSex() == Sex.MAN && x.getAge() >= 18 && x.getAge() < 65))
                 .sorted(Comparator.comparing(Person::getFamily))
                 .collect(Collectors.toList());
 
-        for (Person person : rabotosposobnie){
+        for (Person person : workers){
             if (person.getEducation() == Education.HIGHER && ((person.getSex() == Sex.WOMAN && person.getAge() >= 18 && person.getAge() < 60) || (person.getSex() == Sex.MAN && person.getAge() >= 18 && person.getAge() < 65)) != true){
                 System.out.println("False");
                 break;
             }
         }
-        System.out.println(rabotosposobnie.get(50).toString());
 
 
     }
